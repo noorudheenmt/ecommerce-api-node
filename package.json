@@ -1,0 +1,26 @@
+{
+  "name": "ecommerce-api-node",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon server.js",
+    "stag": "cross-env NODE_ENV=staging node server.js",
+    "prod": "cross-env NODE_ENV=production node server.js"
+  },
+  "keywords": [],
+  "author": "Mohammed Noorudheen MT <mohammednoorudheenmt@gmail.com>",
+  "license": "ISC",
+  "description": "ecommerce API built with Node.js, Express, and MongoDB.",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "helmet": "^8.1.0",
+    "mongoose": "^9.0.2"
+  },
+  "devDependencies": {
+    "cross-env": "^10.1.0",
+    "nodemon": "^3.1.11"
+  }
+}

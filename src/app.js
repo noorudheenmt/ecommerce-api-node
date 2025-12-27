@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
-import pingRoutes from "./routes/pingRoutes.js";
+import routes from "#routes/index.js";
 
 const app = express();
 
@@ -9,8 +9,8 @@ app.use(cors());
 app.use(helmet());
 app.use(express.json());
 
-// ping route
-app.use('/api', pingRoutes);
+// routes
+app.use("/api", routes);
 
 // api route
 app.use("/api", (req, res) => {

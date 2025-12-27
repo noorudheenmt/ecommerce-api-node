@@ -32,18 +32,23 @@ const getNextLogNumber = (logDir, apiName) => {
 };
 
 // create logger function
-export const createLogger = (apiName) => {
+export const createLogger = (apiName, version = "v1") => {
   const date = getDate();
   const baseDir = path.resolve();
-  const logDir = path.join(baseDir, "logs", date, apiName);
 
-  if (!fs.existsSync(logDir)) fs.mkdirSync(logDir, { recursive: true });
+  // versioned log directory
+  const logDir = path.join(baseDir, "logs", version, date, apiName);
+
+  if (!fs.existsSync(logDir)) {
+    fs.mkdirSync(logDir, { recursive: true });
+  }
 
   const fileNumber = getNextLogNumber(logDir, apiName);
   const logFile = path.join(logDir, `${apiName}-${fileNumber}.log`);
 
   return (message, type = "info") => {
     const time = getTime();
+
     try {
       if (type instanceof Error) {
         fs.appendFileSync(logFile, `[${time}] ERROR: ${message}\n`);
@@ -51,11 +56,16 @@ export const createLogger = (apiName) => {
         return;
       }
 
-      if (type === "warn") fs.appendFileSync(logFile, `[${time}] WARN: ${message}\n`);
-      else if (type === "error") fs.appendFileSync(logFile, `[${time}] ERROR: ${message}\n`);
-      else fs.appendFileSync(logFile, `[${time}] INFO: ${message}\n`);
+      if (type === "warn") {
+        fs.appendFileSync(logFile, `[${time}] WARN: ${message}\n`);
+      } else if (type === "error") {
+        fs.appendFileSync(logFile, `[${time}] ERROR: ${message}\n`);
+      } else {
+        fs.appendFileSync(logFile, `[${time}] INFO: ${message}\n`);
+      }
     } catch (err) {
       console.error("LOGGER FAILED", err.message);
     }
   };
 };
+

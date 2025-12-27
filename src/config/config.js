@@ -14,7 +14,12 @@ dotenv.config({
 const config = {
   NODE_ENV: process.env.NODE_ENV,
   PORT: process.env.PORT,
-  DB_URI: process.env.DB_URI
+  FRONTEND_URL: process.env.FRONTEND_URL,
+  DB_URI: process.env.DB_URI,
+  ACCESS_TOKEN_SECRET: process.env.ACCESS_TOKEN_SECRET,
+  REFRESH_TOKEN_SECRET: process.env.REFRESH_TOKEN_SECRET,
+  EMAIL_USERNAME: process.env.EMAIL_USERNAME,
+  EMAIL_PASSWORD: process.env.EMAIL_PASSWORD,
 };
 
 export default config;

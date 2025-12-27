@@ -14,7 +14,9 @@ export const register = async (data, log) => {
     const { username, email, password } = data;
 
     // check if user already exists
+    log("User.findOne by email started");
     const existingUser = await User.findOne({ email });
+    log("User.findOne by email completed");
     if (existingUser) {
       const error = new Error("User already exists with this email");
       error.statusCode = 409;

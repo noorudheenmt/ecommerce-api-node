@@ -34,12 +34,12 @@ export const generateRefreshToken = (payload, log) => {
 // verify access token
 export const verifyAccessToken = (token, log) => {
   try {
-    log("Verifying access token started");
+    if (log) log("Verifying access token started");
     const decoded = jwt.verify(token, config.ACCESS_TOKEN_SECRET);
-    log("Verifying access token completed");
+    if (log) log("Verifying access token completed");
     return decoded;
   } catch (error) {
-    log(error.stack, "error");
+    if (log) log(error.stack, "error");
     throw new Error("Invalid or expired access token");
   }
 };

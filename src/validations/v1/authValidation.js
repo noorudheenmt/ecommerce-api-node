@@ -13,6 +13,16 @@ export const loginSchema = Joi.object({
   password: Joi.string().required(),
 });
 
+// Logout validation
+export const logoutSchema = Joi.object({
+  token: Joi.string().required(),
+});
+
+// Refresh token validation 
+export const refreshTokenSchema = Joi.object({
+  token: Joi.string().required(),
+});
+
 // Forgot password validation
 export const forgotPasswordSchema = Joi.object({
   email: Joi.string().email().required(),

@@ -6,7 +6,7 @@ import * as authValidation from "#validations/v1/authValidation.js";
 
 const router = express.Router();
 
-// Register
+// register router
 router.post(
   "/register",
   validate.validateBody(authValidation.registerSchema),
@@ -27,7 +27,7 @@ router.post(
   }
 );
 
-// Login
+// login router
 router.post(
   "/login",
   validate.validateBody(authValidation.loginSchema),
@@ -48,7 +48,7 @@ router.post(
   }
 );
 
-// Logout
+// logout router
 router.post(
   "/logout",
   validate.validateBody(authValidation.logoutSchema),
@@ -69,7 +69,7 @@ router.post(
   }
 );
 
-// Refresh token
+// refresh-token router
 router.post(
   "/refresh-token",
   validate.validateBody(authValidation.refreshTokenSchema),
@@ -90,7 +90,7 @@ router.post(
   }
 );
 
-// Forgot password
+// forgot-password router
 router.post(
   "/forgot-password",
   validate.validateBody(authValidation.forgotPasswordSchema),
@@ -111,7 +111,7 @@ router.post(
   }
 );
 
-// Reset password
+// reset-password router
 router.post(
   "/reset-password",
   validate.validateBody(authValidation.resetPasswordSchema),

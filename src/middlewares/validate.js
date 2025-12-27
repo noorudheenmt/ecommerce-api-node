@@ -1,4 +1,4 @@
-// validate request body 
+// validateBody middleware
 export const validateBody = (schema) => {
   return (req, res, next) => {
     const { error } = schema.validate(req.body);

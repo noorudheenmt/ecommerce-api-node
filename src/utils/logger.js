@@ -1,10 +1,10 @@
 import fs from "fs";
 import path from "path";
 
-// getDate helper
+// getDate utility
 const getDate = () => new Date().toISOString().split("T")[0];
 
-// getTime helper
+// getTime utility
 const getTime = () => {
   const d = new Date();
   let hours = d.getHours();
@@ -18,7 +18,7 @@ const getTime = () => {
   return `${hh}:${mm} ${ampm}`;
 };
 
-// get next log file number
+// getNextLogNumber utility
 const getNextLogNumber = (logDir, apiName) => {
   if (!fs.existsSync(logDir)) return 1;
 
@@ -31,7 +31,7 @@ const getNextLogNumber = (logDir, apiName) => {
   return numbers.length ? Math.max(...numbers) + 1 : 1;
 };
 
-// create logger function
+// createLogger utility
 export const createLogger = (apiName, version = "v1") => {
   const date = getDate();
   const baseDir = path.resolve();

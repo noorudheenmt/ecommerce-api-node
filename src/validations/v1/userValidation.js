@@ -1,10 +1,12 @@
 import Joi from "joi";
 
+// updateProfileSchema validation
 export const updateProfileSchema = Joi.object({
   username: Joi.string().min(3),
   email: Joi.string().email(),
 });
 
+// addressSchema validation
 export const addressSchema = Joi.object({
   fullname: Joi.string().required(),
   phone: Joi.string().required(),

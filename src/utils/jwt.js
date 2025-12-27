@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import config from "#config/config.js";
 
-// generate access token
+// generateAccessToken utility
 export const generateAccessToken = (payload, log) => {
   try {
     log("Generating access token started");
@@ -16,7 +16,7 @@ export const generateAccessToken = (payload, log) => {
   }
 };
 
-// generate refresh token
+// generateRefreshToken utility
 export const generateRefreshToken = (payload, log) => {
   try {
     log("Generating refresh token started");
@@ -31,7 +31,7 @@ export const generateRefreshToken = (payload, log) => {
   }
 };
 
-// verify access token
+// verifyAccessToken utility
 export const verifyAccessToken = (token, log) => {
   try {
     if (log) log("Verifying access token started");
@@ -44,7 +44,7 @@ export const verifyAccessToken = (token, log) => {
   }
 };
 
-// verify refresh token
+// verifyRefreshToken utility
 export const verifyRefreshToken = (token, log) => {
   try {
     log("Verifying refresh token started");

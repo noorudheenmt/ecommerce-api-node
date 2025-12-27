@@ -127,7 +127,7 @@ export const logout = async (data, log) => {
   }
 };
 
-// refresh token service
+// refreshToken service
 export const refreshToken = async (data, log) => {
   try {
     const { token } = data;
@@ -188,7 +188,7 @@ export const refreshToken = async (data, log) => {
   }
 };
 
-// forgot password service
+// forgotPassword service
 export const forgotPassword = async (data, log) => {
   try {
     const { email } = data;
@@ -266,7 +266,7 @@ export const forgotPassword = async (data, log) => {
   }
 };
 
-// reset password service
+// resetPassword service
 export const resetPassword = async (data, log) => {
   try {
     const { email, token, newPassword } = data;

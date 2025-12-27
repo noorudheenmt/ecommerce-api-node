@@ -1,6 +1,6 @@
 import { createLogger } from "./logger.js";
 
-// Log request helper
+// logRequest utility
 export const logRequest = (req, apiName, version) => {
   const log = createLogger(apiName, version);
   log(`Request URL: ${req.originalUrl}`);
@@ -10,7 +10,7 @@ export const logRequest = (req, apiName, version) => {
   return log;
 };
 
-// Success response
+// sendSuccess utility
 export const sendSuccess = (res, payload, statusCode = 200) => {
   return res.status(statusCode).json({
     status: "ok",
@@ -18,7 +18,7 @@ export const sendSuccess = (res, payload, statusCode = 200) => {
   });
 };
 
-// Error response
+// sendError utility
 export const sendError = (res, error) => {
   const statusCode = error.statusCode || 500;
   

@@ -3,6 +3,7 @@ import pingRoutesV1 from "./v1/pingRoutes.js";
 import pingRoutesV2 from "./v2/pingRoutes.js";
 import authRoutesV1 from "./v1/authRoutes.js";
 import userRoutesV1 from "./v1/userRoutes.js";
+import prodRoutesv1 from "./v1/prodRoutes.js";
 
 const router = express.Router();
 
@@ -10,6 +11,7 @@ const router = express.Router();
 router.use("/ping/v1", pingRoutesV1);
 router.use("/auth/v1", authRoutesV1);
 router.use("/user/v1", userRoutesV1);
+router.use("/prod/v1", prodRoutesv1);
 
 // Mount versioned routes for v2
 router.use("/ping/v2", pingRoutesV2);

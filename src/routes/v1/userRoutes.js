@@ -7,7 +7,7 @@ import * as protect from "#middlewares/authMiddleware.js";
 
 const router = express.Router();
 
-// get profile
+// profile router
 router.get("/profile", protect.verifyToken, async (req, res) => {
   const log = commonController.logRequest(req, "get-profile", "v1");
   log("API call started");
@@ -24,7 +24,7 @@ router.get("/profile", protect.verifyToken, async (req, res) => {
   }
 });
 
-// update profile
+// profile router
 router.put(
   "/profile",
   protect.verifyToken,
@@ -46,7 +46,7 @@ router.put(
   }
 );
 
-// get addresses
+// address router
 router.get("/address", protect.verifyToken, async (req, res) => {
   const log = commonController.logRequest(req, "get-address", "v1");
   log("API call started");
@@ -63,7 +63,7 @@ router.get("/address", protect.verifyToken, async (req, res) => {
   }
 });
 
-// add address
+// address router
 router.post(
   "/address",
   protect.verifyToken,
@@ -85,7 +85,7 @@ router.post(
   }
 );
 
-// update address
+// address/:id router
 router.put(
   "/address/:id",
   protect.verifyToken,
@@ -107,7 +107,7 @@ router.put(
   }
 );
 
-// delete address
+// address/:id router
 router.delete("/address/:id", protect.verifyToken, async (req, res) => {
   const log = commonController.logRequest(req, "delete-address", "v1");
   log("API call started");

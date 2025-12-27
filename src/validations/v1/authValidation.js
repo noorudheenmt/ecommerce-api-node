@@ -1,34 +1,34 @@
 import Joi from "joi";
 
-// Register validation
+// registerSchema validation
 export const registerSchema = Joi.object({
   username: Joi.string().required(),
   email: Joi.string().email().required(),
   password: Joi.string().min(6).required(),
 });
 
-// Login validation
+// loginSchema validation
 export const loginSchema = Joi.object({
   email: Joi.string().email().required(),
   password: Joi.string().required(),
 });
 
-// Logout validation
+// logoutSchema validation
 export const logoutSchema = Joi.object({
   token: Joi.string().required(),
 });
 
-// Refresh token validation 
+// refreshTokenSchema validation
 export const refreshTokenSchema = Joi.object({
   token: Joi.string().required(),
 });
 
-// Forgot password validation
+// forgotPasswordSchema validation
 export const forgotPasswordSchema = Joi.object({
   email: Joi.string().email().required(),
 });
 
-// Reset password validation
+// resetPasswordSchema validation
 export const resetPasswordSchema = Joi.object({
   email: Joi.string().email().required(),
   token: Joi.string().required(),

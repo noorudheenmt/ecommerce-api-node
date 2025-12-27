@@ -1,7 +1,7 @@
 import * as userService from "#services/v1/userService.js";
 import * as commonController from "#utils/commonController.js";
 
-// Get profile controller
+// getProfile controller
 export const getProfile = async (req, res, log) => {
   try {
     log("userService.getProfile execution started");
@@ -14,7 +14,7 @@ export const getProfile = async (req, res, log) => {
   }
 };
 
-// Update profile controller
+// updateProfile controller
 export const updateProfile = async (req, res, log) => {
   try {
     log("userService.updateProfile execution started");
@@ -30,7 +30,7 @@ export const updateProfile = async (req, res, log) => {
   }
 };
 
-// List addresses controller
+// getAddresses controller
 export const getAddresses = async (req, res, log) => {
   try {
     log("userService.listAddresses execution started");
@@ -43,7 +43,7 @@ export const getAddresses = async (req, res, log) => {
   }
 };
 
-// Add address controller
+// addAddress controller
 export const addAddress = async (req, res, log) => {
   try {
     log("userService.addAddress execution started");
@@ -59,7 +59,7 @@ export const addAddress = async (req, res, log) => {
   }
 };
 
-// Update address controller
+// updateAddress controller
 export const updateAddress = async (req, res, log) => {
   try {
     log("userService.updateAddress execution started");
@@ -80,7 +80,7 @@ export const updateAddress = async (req, res, log) => {
   }
 };
 
-// Delete address controller
+// deleteAddress controller
 export const deleteAddress = async (req, res, log) => {
   try {
     log("userService.deleteAddress execution started");

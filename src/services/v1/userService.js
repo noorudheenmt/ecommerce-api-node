@@ -24,7 +24,7 @@ export const getProfile = async (userId, log) => {
   }
 };
 
-// update profile service
+// updateProfile service
 export const updateProfile = async (userId, data, log) => {
   try {
     log("User.findByIdAndUpdate started");
@@ -49,7 +49,7 @@ export const updateProfile = async (userId, data, log) => {
   }
 };
 
-// get addresses service
+// getAddresses service
 export const getAddresses = async (userId, log) => {
   try {
     log("Address.find by userId started");
@@ -70,7 +70,7 @@ export const getAddresses = async (userId, log) => {
   }
 };
 
-// add address service
+// addAddress service
 export const addAddress = async (userId, data, log) => {
   try {
     // isDefault handling
@@ -98,7 +98,7 @@ export const addAddress = async (userId, data, log) => {
   }
 };
 
-// Update address
+// updateAddress service
 export const updateAddress = async (userId, addressId, data, log) => {
   try {
     // isDefault handling
@@ -134,7 +134,7 @@ export const updateAddress = async (userId, addressId, data, log) => {
   }
 };
 
-// delete address service
+// deleteAddress service
 export const deleteAddress = async (userId, addressId, log) => {
   try {
     log("Address.findOneAndDelete started");

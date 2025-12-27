@@ -1,7 +1,7 @@
 import nodemailer from "nodemailer";
 import config from "#config/config.js";
 
-// send email utility
+// sendEmail utility
 export const sendEmail = async ({ to, subject, text, html }, log) => {
   try {
     // create transporter

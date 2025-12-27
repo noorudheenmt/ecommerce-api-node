@@ -1,5 +1,6 @@
 import * as jwt from "#utils/jwt.js";
 
+// verifyToken middleware
 export const verifyToken = (req, res, next) => {
   try {
     // Get token from headers

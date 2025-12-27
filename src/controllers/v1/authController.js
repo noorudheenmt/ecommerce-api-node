@@ -50,7 +50,7 @@ export const logout = async (req, res, log) => {
   }
 };
 
-// Refresh token controller
+// refreshToken controller
 export const refreshToken = async (req, res, log) => {
   try {
     log("authService.refreshToken execution started");
@@ -66,7 +66,7 @@ export const refreshToken = async (req, res, log) => {
   }
 };
 
-// Forgot password controller
+// forgotPassword controller
 export const forgotPassword = async (req, res, log) => {
   try {
     log("authService.forgotPassword execution started");
@@ -81,7 +81,7 @@ export const forgotPassword = async (req, res, log) => {
   }
 };
 
-// Reset password controller
+// resetPassword controller
 export const resetPassword = async (req, res, log) => {
   try {
     log("authService.resetPassword execution started");

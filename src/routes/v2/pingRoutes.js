@@ -4,7 +4,7 @@ import * as commonController from "#utils/commonController.js";
 
 const router = express.Router();
 
-// Ping
+// ping router
 router.get("/", async (req, res) => {
   const log = commonController.logRequest(req, "ping", "v2");
   log("API call started");

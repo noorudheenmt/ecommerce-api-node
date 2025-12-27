@@ -78,7 +78,7 @@ export const login = async (data, log) => {
     }
 
     // generate tokens
-    const payload = { userId: user._id, email: user.email };
+    const payload = { userId: user._id, email: user.email, role: user.role };
     const accessToken = jwt.generateAccessToken(payload, log);
     const refreshToken = jwt.generateRefreshToken(payload, log);
 
@@ -153,7 +153,7 @@ export const refreshToken = async (data, log) => {
     const decoded = jwt.verifyRefreshToken(token, log);
     log("Decoding refresh token completed");
 
-    const payload = { userId: decoded.userId, email: decoded.email };
+    const payload = { userId: decoded.userId, email: decoded.email, role: decoded.role };
     log(`payload: ${JSON.stringify(payload)}`);
 
     // generate new tokens

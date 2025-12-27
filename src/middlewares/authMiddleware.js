@@ -14,10 +14,13 @@ export const verifyToken = (req, res, next) => {
     // Verify token
     const token = authHeader.split(" ")[1];
     const response = jwt.verifyAccessToken(token, null);
-    req.user = response.userId;
+    req.user = response;
     next();
-  } catch (err) {
-    console.log(err)
-    return res.status(401).json({ status: "error", message: "Invalid token" });
+  } catch (error) {
+    console.log(error.stack);
+    return res.status(error.statusCode || 500).json({
+      status: "error",
+      message: error.message || "Internal Server Error",
+    });
   }
 };

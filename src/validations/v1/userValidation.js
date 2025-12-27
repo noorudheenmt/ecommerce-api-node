@@ -6,6 +6,11 @@ export const updateProfileSchema = Joi.object({
   email: Joi.string().email(),
 });
 
+// updateRoleSchema validation
+export const updateRoleSchema = Joi.object({
+  role: Joi.string().valid("user", "admin").required(),
+});
+
 // addressSchema validation
 export const addressSchema = Joi.object({
   fullname: Joi.string().required(),

@@ -4,7 +4,6 @@ import Category from "#models/category.js";
 
 // getProducts service
 export const getProducts = async (query, log) => {
-  console.log("reached service");
   try {
     const { page = 1, limit = 10, sort = "-createdAt", category } = query;
     
@@ -38,7 +37,7 @@ export const getProducts = async (query, log) => {
       .limit(Number(limit))
       .select("-__v");
     log("Product.find completed");
-    console.log(products);
+
     log("Product.countDocuments started");
     const total = await Product.countDocuments(filter);
     log("Product.countDocuments completed");

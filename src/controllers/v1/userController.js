@@ -5,7 +5,7 @@ import * as commonController from "#utils/commonController.js";
 export const getProfile = async (req, res, log) => {
   try {
     log("userService.getProfile execution started");
-    const result = await userService.getProfile(req.user, log);
+    const result = await userService.getProfile(req.user.userId, log);
     log("userService.getProfile execution completed");
     return commonController.sendSuccess(res, { data: result });
   } catch (error) {
@@ -18,7 +18,7 @@ export const getProfile = async (req, res, log) => {
 export const updateProfile = async (req, res, log) => {
   try {
     log("userService.updateProfile execution started");
-    const result = await userService.updateProfile(req.user, req.body, log);
+    const result = await userService.updateProfile(req.user.userId, req.body, log);
     log("userService.updateProfile execution completed");
     return commonController.sendSuccess(res, {
       message: "Profile updated",
@@ -34,7 +34,7 @@ export const updateProfile = async (req, res, log) => {
 export const getAddresses = async (req, res, log) => {
   try {
     log("userService.listAddresses execution started");
-    const result = await userService.getAddresses(req.user, log);
+    const result = await userService.getAddresses(req.user.userId, log);
     log("userService.listAddresses execution completed");
     return commonController.sendSuccess(res, { data: result });
   } catch (error) {
@@ -47,7 +47,7 @@ export const getAddresses = async (req, res, log) => {
 export const addAddress = async (req, res, log) => {
   try {
     log("userService.addAddress execution started");
-    const result = await userService.addAddress(req.user, req.body, log);
+    const result = await userService.addAddress(req.user.userId, req.body, log);
     log("userService.addAddress execution completed");
     return commonController.sendSuccess(res, {
       message: "Address added",
@@ -64,7 +64,7 @@ export const updateAddress = async (req, res, log) => {
   try {
     log("userService.updateAddress execution started");
     const result = await userService.updateAddress(
-      req.user,
+      req.user.userId,
       req.params.id,
       req.body,
       log
@@ -84,7 +84,7 @@ export const updateAddress = async (req, res, log) => {
 export const deleteAddress = async (req, res, log) => {
   try {
     log("userService.deleteAddress execution started");
-    await userService.deleteAddress(req.user, req.params.id, log);
+    await userService.deleteAddress(req.user.userId, req.params.id, log);
     log("userService.deleteAddress execution completed");
     return commonController.sendSuccess(res, {
       message: "Address deleted",

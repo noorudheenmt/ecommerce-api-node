@@ -1,11 +1,15 @@
 import express from "express";
+import * as validate from "#middlewares/validateMiddleware.js";
 import * as commonController from "#utils/commonController.js";
+import * as productValidation from "#validations/v1/public/prodValidation.js";
 import * as productController from "#controllers/v1/public/prodController.js";
 
 const router = express.Router();
 
 // products router
-router.get("/", async (req, res) => {
+router.get("/", 
+  validate.validateQuery(productValidation.getProductsSchema),
+  async (req, res) => {
   const log = commonController.logRequest(req, "get-products", "v1");
   log("API call started");
   try {
@@ -22,7 +26,9 @@ router.get("/", async (req, res) => {
 });
 
 // search router
-router.get("/search", async (req, res) => {
+router.get("/search", 
+  validate.validateQuery(productValidation.searchProductsSchema),
+  async (req, res) => {
   const log = commonController.logRequest(req, "search-products", "v1");
   log("API call started");
   try {
@@ -39,7 +45,9 @@ router.get("/search", async (req, res) => {
 });
 
 // :id router
-router.get("/:id", async (req, res) => {
+router.get("/:id", 
+  validate.validateParams(productValidation.productIdParamSchema),
+  async (req, res) => {
   const log = commonController.logRequest(req, "get-product", "v1");
   log("API call started");
   try {
@@ -56,7 +64,9 @@ router.get("/:id", async (req, res) => {
 });
 
 // :id/reviews router
-router.get("/:id/reviews", async (req, res) => {
+router.get("/:id/reviews", 
+  validate.validateParams(productValidation.productReviewsParamSchema),
+  async (req, res) => {
   const log = commonController.logRequest(req, "get-product-reviews", "v1");
   log("API call started");
   try {

@@ -2,9 +2,9 @@ import fs from "fs";
 import path from "path";
 import crypto from "crypto";
 import bcrypt from "bcryptjs";
-import config from "#config/config.js";
-import Token from "#models/token.js";
 import User from "#models/user.js";
+import Token from "#models/token.js";
+import config from "#config/config.js";
 import * as jwt from "#utils/jwt.js";
 import * as sendEmail from "#utils/sendEmail.js";
 

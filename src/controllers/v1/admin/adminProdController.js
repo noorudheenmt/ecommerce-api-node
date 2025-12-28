@@ -1,5 +1,5 @@
-import * as productService from "#services/v1/adminProdService.js";
 import * as commonController from "#utils/commonController.js";
+import * as productService from "#services/v1/admin/adminProdService.js";
 
 // createProduct controller
 export const createProduct = async (req, res, log) => {

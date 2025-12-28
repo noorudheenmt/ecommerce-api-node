@@ -1,5 +1,5 @@
-import Product from "#models/product.js";
 import Review from "#models/review.js";
+import Product from "#models/product.js";
 import Category from "#models/category.js";
 
 // getProducts service

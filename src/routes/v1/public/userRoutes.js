@@ -1,9 +1,9 @@
 import express from "express";
-import * as userController from "#controllers/v1/userController.js";
-import * as commonController from "#utils/commonController.js";
-import * as validate from "#middlewares/validate.js";
-import * as userValidation from "#validations/v1/userValidation.js";
 import * as protect from "#middlewares/authMiddleware.js";
+import * as validate from "#middlewares/validateMiddleware.js";
+import * as commonController from "#utils/commonController.js";
+import * as userValidation from "#validations/v1/public/userValidation.js";
+import * as userController from "#controllers/v1/public/userController.js";
 
 const router = express.Router();
 

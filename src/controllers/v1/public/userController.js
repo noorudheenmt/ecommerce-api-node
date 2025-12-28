@@ -1,5 +1,5 @@
-import * as userService from "#services/v1/userService.js";
 import * as commonController from "#utils/commonController.js";
+import * as userService from "#services/v1/public/userService.js";
 
 // getProfile controller
 export const getProfile = async (req, res, log) => {

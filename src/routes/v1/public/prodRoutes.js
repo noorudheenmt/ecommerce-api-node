@@ -1,8 +1,6 @@
 import express from "express";
-import * as productController from "#controllers/v1/prodController.js";
 import * as commonController from "#utils/commonController.js";
-// import * as validate from "#middlewares/validate.js";
-// import * as productValidation from "#validations/v1/productValidation.js";
+import * as productController from "#controllers/v1/public/prodController.js";
 
 const router = express.Router();
 

@@ -30,7 +30,7 @@ export const createProduct = async (data, log) => {
     };
   } catch (error) {
     log(error.stack, "error");
-    throw new Error("Failed to create product");
+    throw error;
   }
 };
 
@@ -50,8 +50,11 @@ export const updateProduct = async (id, data, log) => {
     delete updatedProduct.__v;
 
     // Check if product exists
-    if (!updatedProduct) throw new Error("Product not found");
-    log("updatedProduct:", JSON.stringify(updatedProduct));
+    if (!updatedProduct) {
+      const err = new Error("Product not found");
+      err.statusCode = 404;
+      throw err;
+    }
 
     return {
       message: "Product updated successfully",
@@ -59,7 +62,7 @@ export const updateProduct = async (id, data, log) => {
     };
   } catch (error) {
     log(error.stack, "error");
-    throw new Error("Failed to update product");
+    throw error;
   }
 };
 
@@ -67,15 +70,19 @@ export const updateProduct = async (id, data, log) => {
 export const deleteProduct = async (id, log) => {
   try {
     log("productService.deleteProduct execution started");
-    const product = await Product.findByIdAndUpdate(
-      id,
+    const product = await Product.findOneAndUpdate(
+      { _id: id, isActive: true },
       { isActive: false },
       { new: true }
     );
     log("productService.deleteProduct execution completed");
 
     // Check if product exists
-    if (!product) throw new Error("Product not found");
+    if (!product) {
+      const err = new Error("Product not found or already deleted");
+      err.statusCode = 404;
+      throw err;
+    }
 
     return {
       message: "Product deleted successfully",
@@ -83,7 +90,7 @@ export const deleteProduct = async (id, log) => {
     };
   } catch (error) {
     log(error.stack, "error");
-    throw new Error("Failed to delete product");
+    throw error;
   }
 };
 
@@ -105,7 +112,11 @@ export const uploadProductImages = async (productId, files, log) => {
     log("Product.findByIdAndUpdate completed");
 
     // Check if product exists
-    if (!product) throw new Error("Product not found");
+    if (!product) {
+      const err = new Error("Product not found");
+      err.statusCode = 404;
+      throw err;
+    }
 
     return {
       message: "Images uploaded successfully",
@@ -114,6 +125,6 @@ export const uploadProductImages = async (productId, files, log) => {
     };
   } catch (error) {
     log(error.stack, "error");
-    throw new Error("Failed to upload product images");
+    throw error;
   }
 };

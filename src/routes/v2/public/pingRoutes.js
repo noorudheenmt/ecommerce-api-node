@@ -1,12 +1,12 @@
 import express from "express";
-import * as pingController from "#controllers/v1/pingController.js";
 import * as commonController from "#utils/commonController.js";
+import * as pingController from "#controllers/v2/public/pingController.js";
 
 const router = express.Router();
 
 // ping router
 router.get("/", async (req, res) => {
-  const log = commonController.logRequest(req, "ping", "v1");
+  const log = commonController.logRequest(req, "ping", "v2");
   log("API call started");
   try {
     log("pingController.ping execution started");

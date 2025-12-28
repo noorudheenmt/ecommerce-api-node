@@ -1,5 +1,5 @@
-import * as userService from "#services/v1/adminService.js";
 import * as commonController from "#utils/commonController.js";
+import * as userService from "#services/v1/admin/adminUserService.js";
 
 // updateUserRole controller
 export const updateUserRole = async (req, res, log) => {

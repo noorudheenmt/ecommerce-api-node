@@ -115,17 +115,17 @@ export const updateAddress = async (userId, addressId, data, log) => {
       { new: true, runValidators: true }
     );
     log("Address.findOneAndUpdate completed");
-
-    // Remove __v from response
-    address = address.toObject();
-    delete address.__v;
-
+    
     // Check if address exists
     if (!address) {
       const err = new Error("Address not found");
       err.statusCode = 404;
       throw err;
     }
+    
+    // Remove __v from response
+    address = address.toObject();
+    delete address.__v;
 
     return address;
   } catch (error) {

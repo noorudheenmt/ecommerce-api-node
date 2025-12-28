@@ -1,5 +1,5 @@
-import * as pingService from "#services/v2/pingService.js";
 import * as commonController from "#utils/commonController.js";
+import * as pingService from "#services/v2/public/pingService.js";
 
 // ping controller
 export const ping = async (req, res, log) => {

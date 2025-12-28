@@ -1,5 +1,5 @@
-import * as authService from "#services/v1/authService.js";
 import * as commonController from "#utils/commonController.js";
+import * as authService from "#services/v1/public/authService.js";
 
 // Register controller
 export const register = async (req, res, log) => {

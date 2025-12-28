@@ -1,11 +1,11 @@
 import express from "express";
-import * as productController from "#controllers/v1/adminProdController.js";
-import * as commonController from "#utils/commonController.js";
-import * as validate from "#middlewares/validate.js";
-import * as productValidation from "#validations/v1/prodValidation.js";
-import * as protect from "#middlewares/authMiddleware.js";
 import * as admin from "#middlewares/adminMiddleware.js";
+import * as protect from "#middlewares/authMiddleware.js";
+import * as validate from "#middlewares/validateMiddleware.js";
 import * as cloudinary from "#middlewares/uploadMiddleware.js";
+import * as commonController from "#utils/commonController.js";
+import * as productValidation from "#validations/v1/admin/adminProdValidation.js";
+import * as productController from "#controllers/v1/admin/adminProdController.js";
 
 const router = express.Router();
 

@@ -13,7 +13,7 @@ export const logRequest = (req, apiName, version) => {
 // sendSuccess utility
 export const sendSuccess = (res, payload, statusCode = 200) => {
   return res.status(statusCode).json({
-    status: "ok",
+    status: "success",
     ...payload,
   });
 };

@@ -64,7 +64,7 @@ export const createLogger = (apiName, version = "v1") => {
         fs.appendFileSync(logFile, `[${time}] INFO: ${message}\n`);
       }
     } catch (err) {
-      console.error("LOGGER FAILED", err.message);
+      console.log(err.stack);
     }
   };
 };

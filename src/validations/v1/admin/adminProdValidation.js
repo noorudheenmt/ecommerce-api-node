@@ -21,3 +21,8 @@ export const updateProductSchema = Joi.object({
   stock: Joi.number().integer().min(0).optional(),
   isActive: Joi.boolean().optional(),
 });
+
+// productIdParamSchema validation
+export const productIdParamSchema = Joi.object({
+  id: Joi.string().hex().length(24).required(),
+});

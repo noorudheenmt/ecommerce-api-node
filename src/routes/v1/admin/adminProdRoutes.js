@@ -37,6 +37,7 @@ router.put(
   "/:id",
   protect.verifyToken,
   admin.adminOnly,
+  validate.validateParams(productValidation.productIdParamSchema),
   validate.validateBody(productValidation.updateProductSchema),
   async (req, res) => {
     const log = commonController.logRequest(req, "update-product", "v1");
@@ -59,6 +60,7 @@ router.put(
 router.delete(
   "/:id",
   protect.verifyToken,
+  validate.validateParams(productValidation.productIdParamSchema),
   admin.adminOnly,
   async (req, res) => {
     const log = commonController.logRequest(req, "delete-product", "v1");
@@ -81,8 +83,17 @@ router.delete(
 router.post(
   "/:id/images",
   protect.verifyToken,
+  validate.validateParams(productValidation.productIdParamSchema),
   admin.adminOnly,
-  cloudinary.uploadProductImages,
+  (req, res, next) => {
+    // uploadProductImages error handling
+    cloudinary.uploadProductImages(req, res, (err) => {
+      if (err) {
+        return res.status(400).json({ status: "error", message: err.message });
+      }
+      next();
+    });
+  },
   async (req, res) => {
     const log = commonController.logRequest(req, "upload-product-images", "v1");
     log("API call started");

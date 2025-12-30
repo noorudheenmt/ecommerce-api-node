@@ -20,6 +20,8 @@ router.get("/", protect.verifyToken, async (req, res) => {
     if (!res.headersSent) {
       res.status(500).json({ status: "error", message: error.message });
     }
+  } finally {
+    log("API call ended");
   }
 });
 

@@ -54,6 +54,19 @@ const orderSchema = new mongoose.Schema(
       enum: ["PENDING", "PAID", "FAILED"],
       default: "PENDING",
     },
+
+    razorpayOrderId: {
+      type: String,
+      index: true,
+    },
+
+    razorpayPaymentId: {
+      type: String,
+    },
+
+    razorpaySignature: {
+      type: String,
+    }
   },
   // adds createdAt & updatedAt fields
   { timestamps: true }

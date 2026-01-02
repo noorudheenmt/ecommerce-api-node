@@ -33,9 +33,12 @@ export const createOrder = async (userId, data, log) => {
     });
     log("Order.create execution completed");
 
-    log("Cart.deleteOne execution started");
-    await Cart.deleteOne({ user: userId });
-    log("Cart.deleteOne execution completed");
+    // clear cart for cod orders
+    if (data.paymentMethod === "COD") {
+      log("Cart.deleteOne execution started");
+      await Cart.deleteOne({ user: userId });
+      log("Cart.deleteOne execution completed");
+    }
 
     const orderObj = order.toObject();
     delete orderObj.__v;

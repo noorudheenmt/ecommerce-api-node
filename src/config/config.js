@@ -1,5 +1,5 @@
-import dotenv from "dotenv";
 import path from "path";
+import dotenv from "dotenv";
 
 // Determine current environment (default = development)
 const env = process.env.NODE_ENV || "development";
@@ -19,7 +19,8 @@ const config = {
   ACCESS_TOKEN_SECRET: process.env.ACCESS_TOKEN_SECRET,
   REFRESH_TOKEN_SECRET: process.env.REFRESH_TOKEN_SECRET,
   EMAIL_USERNAME: process.env.EMAIL_USERNAME,
-  EMAIL_PASSWORD: process.env.EMAIL_PASSWORD
+  EMAIL_PASSWORD: process.env.EMAIL_PASSWORD,
+  RAZORPAY_WEBHOOK_SECRET: process.env.RAZORPAY_WEBHOOK_SECRET,
 };
 
 export default config;

@@ -98,7 +98,11 @@ export const deleteProduct = async (id, log) => {
 export const uploadProductImages = async (productId, files, log) => {
   try {
     // Check if files are provided
-    if (!files || files.length === 0) throw new Error("No images uploaded");
+    if (!files || files.length === 0) {
+      const err = new Error("No images uploaded");
+      err.statusCode = 400;
+      throw err;
+    }
 
     // Only save the URL
     const uploadedImages = files.map((file) => file.path);

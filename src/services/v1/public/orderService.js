@@ -10,7 +10,9 @@ export const createOrder = async (userId, data, log) => {
 
     // Check if cart exists
     if (!cart || cart.items.length === 0) {
-      throw new Error("Cart is empty");
+      const err = new Error("Cart is empty");
+      err.statusCode = 404;
+      throw err;
     }
 
     const items = cart.items.map((item) => ({
@@ -85,7 +87,11 @@ export const getOrderById = async (userId, orderId, log) => {
     log("Order.findOne execution completed");
 
     // Check if order exists
-    if (!order) throw new Error("Order not found");
+    if (!order) {
+      const err = new Error("Order not found");
+      err.statusCode = 404;
+      throw err;
+    }
 
     return {
       message: "Order details fetched successfully",
@@ -108,10 +114,16 @@ export const cancelOrder = async (userId, orderId, log) => {
     log("Order.findOne execution completed");
 
     // Check if order exists
-    if (!order) throw new Error("Order not found");
+    if (!order) {
+      const err = new Error("Order not found");
+      err.statusCode = 404;
+      throw err;
+    }
 
     if (!["PLACED", "CONFIRMED"].includes(order.status)) {
-      throw new Error("Order cannot be cancelled");
+      const err = new Error("Order cannot be cancelled");
+      err.statusCode = 400;
+      throw err;
     }
 
     order.status = "CANCELLED";

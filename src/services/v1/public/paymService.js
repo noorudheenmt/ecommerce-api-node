@@ -11,7 +11,9 @@ export const createPaymentOrder = async (userId, log) => {
   log("Cart.findOne execution completed");
 
   if (!cart || cart.items.length === 0) {
-    throw new Error("Cart is empty");
+    const err = new Error("Cart is empty");
+    err.statusCode = 404;
+    throw err;
   }
 
   const totalAmount = cart.items.reduce(
@@ -57,13 +59,15 @@ export const handleWebhook = async (req, log) => {
     const secret = config.RAZORPAY_WEBHOOK_SECRET;
     // get signature from headers
     const signature = req.headers["x-razorpay-signature"];
-   
+
     if (!signature) {
-      throw new Error("Missing Razorpay signature");
+      const err = new Error("Missing Razorpay signature");
+      err.statusCode = 400;
+      throw err;
     }
 
     // raw body
-    const body = req.body; 
+    const body = req.body;
 
     // verify signature
     const expectedSignature = crypto
@@ -72,7 +76,9 @@ export const handleWebhook = async (req, log) => {
       .digest("hex");
 
     if (signature !== expectedSignature) {
-      throw new Error("Invalid webhook signature");
+      const err = new Error("Invalid webhook signature");
+      err.statusCode = 400;
+      throw err;
     }
 
     // parse body
@@ -88,7 +94,7 @@ export const handleWebhook = async (req, log) => {
     if (event.event === "payment.captured") {
       const payment = event.payload.payment.entity;
       const razorpayOrderId = payment.order_id;
-      
+
       log("Order.findOne execution started");
       const order = await Order.findOne({ razorpayOrderId });
       log("Order.findOne execution completed");
@@ -114,7 +120,7 @@ export const handleWebhook = async (req, log) => {
       await Cart.deleteOne({ user: order.user });
       log("Cart.deleteOne execution completed");
       log(`Order ${razorpayOrderId} marked as PAID`);
-      
+
       response = {
         message: "Payment captured successfully",
         orderId: razorpayOrderId,
@@ -127,4 +133,3 @@ export const handleWebhook = async (req, log) => {
     throw error;
   }
 };
-

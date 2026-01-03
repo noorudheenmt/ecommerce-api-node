@@ -7,7 +7,7 @@ import * as userController from "#controllers/v1/public/userController.js";
 
 const router = express.Router();
 
-// profile router
+// get profile router
 router.get("/profile", protect.verifyToken, async (req, res) => {
   const log = commonController.logRequest(req, "get-profile", "v1");
   log("API call started");
@@ -24,7 +24,7 @@ router.get("/profile", protect.verifyToken, async (req, res) => {
   }
 });
 
-// profile router
+// update profile router
 router.put(
   "/profile",
   protect.verifyToken,
@@ -46,7 +46,7 @@ router.put(
   }
 );
 
-// address router
+// get address router
 router.get("/address", protect.verifyToken, async (req, res) => {
   const log = commonController.logRequest(req, "get-address", "v1");
   log("API call started");
@@ -63,7 +63,7 @@ router.get("/address", protect.verifyToken, async (req, res) => {
   }
 });
 
-// address router
+// add address router
 router.post(
   "/address",
   protect.verifyToken,
@@ -85,7 +85,7 @@ router.post(
   }
 );
 
-// address/:id router
+// update address/:id router
 router.put(
   "/address/:id",
   protect.verifyToken,
@@ -107,7 +107,7 @@ router.put(
   }
 );
 
-// address/:id router
+// delete address/:id router
 router.delete("/address/:id", protect.verifyToken, async (req, res) => {
   const log = commonController.logRequest(req, "delete-address", "v1");
   log("API call started");

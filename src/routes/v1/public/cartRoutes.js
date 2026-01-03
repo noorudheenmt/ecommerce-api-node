@@ -7,7 +7,7 @@ import * as cartController from "#controllers/v1/public/cartController.js";
 
 const router = express.Router();
 
-// cart router
+// get cart router
 router.get("/", protect.verifyToken, async (req, res) => {
   const log = commonController.logRequest(req, "get-cart", "v1");
   log("API call started");
@@ -25,7 +25,7 @@ router.get("/", protect.verifyToken, async (req, res) => {
   }
 });
 
-// cart router
+// add to cart router
 router.post(
   "/",
   protect.verifyToken,
@@ -48,7 +48,7 @@ router.post(
   }
 );
 
-// cart/:itemId router
+// get cart/:itemId router
 router.put(
   "/:itemId",
   protect.verifyToken,
@@ -72,7 +72,7 @@ router.put(
   }
 );
 
-// cart/:itemId router
+// delete cart/:itemId router
 router.delete(
   "/:itemId",
   protect.verifyToken,
@@ -95,7 +95,7 @@ router.delete(
   }
 );
 
-// cart router
+// clear cart router
 router.delete("/", protect.verifyToken, async (req, res) => {
   const log = commonController.logRequest(req, "clear-cart", "v1");
   log("API call started");

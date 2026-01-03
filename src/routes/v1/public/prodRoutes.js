@@ -6,7 +6,7 @@ import * as productController from "#controllers/v1/public/prodController.js";
 
 const router = express.Router();
 
-// products router
+// get products router
 router.get("/", 
   validate.validateQuery(productValidation.getProductsSchema),
   async (req, res) => {
@@ -25,7 +25,7 @@ router.get("/",
   }
 });
 
-// search router
+// search products router
 router.get("/search", 
   validate.validateQuery(productValidation.searchProductsSchema),
   async (req, res) => {
@@ -44,7 +44,7 @@ router.get("/search",
   }
 });
 
-// :id router
+// get product/:id router
 router.get("/:id", 
   validate.validateParams(productValidation.productIdParamSchema),
   async (req, res) => {
@@ -63,7 +63,7 @@ router.get("/:id",
   }
 });
 
-// :id/reviews router
+// get product/:id/reviews router
 router.get("/:id/reviews", 
   validate.validateParams(productValidation.productReviewsParamSchema),
   async (req, res) => {

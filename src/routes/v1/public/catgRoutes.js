@@ -6,7 +6,7 @@ import * as categoryController from "#controllers/v1/public/catgController.js";
 
 const router = express.Router();
 
-// categories router
+// get categories router
 router.get(
   "/",
   validate.validateQuery(categoryValidation.getCategoriesSchema),
@@ -31,7 +31,7 @@ router.get(
   }
 );
 
-// category/:id router
+// get category/:id router
 router.get(
   "/:id",
   validate.validateParams(categoryValidation.getCategoryByIdSchema),

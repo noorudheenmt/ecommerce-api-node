@@ -7,7 +7,7 @@ import * as orderController from "#controllers/v1/public/orderController.js";
 
 const router = express.Router();
 
-// order router
+// add order router
 router.post(
   "/",
   protect.verifyToken,
@@ -30,7 +30,7 @@ router.post(
   }
 );
 
-// order router
+// get orders router
 router.get("/", protect.verifyToken, async (req, res) => {
   const log = commonController.logRequest(req, "get-orders", "v1");
   log("API call started");
@@ -48,7 +48,7 @@ router.get("/", protect.verifyToken, async (req, res) => {
   }
 });
 
-// order/:id router
+// get order/:id router
 router.get(
   "/:id",
   protect.verifyToken,
@@ -71,7 +71,7 @@ router.get(
   }
 );
 
-// order/:id/cancel router
+// cancel order/:id router
 router.put(
   "/:id/cancel",
   protect.verifyToken,

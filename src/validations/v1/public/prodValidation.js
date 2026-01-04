@@ -10,7 +10,7 @@ export const getProductsSchema = Joi.object({
 
 // searchProductsSchema validation
 export const searchProductsSchema = Joi.object({
-  KeyboardEvent: Joi.string().min(1).required(), 
+  keyword: Joi.string().min(1).required(), 
 });
 
 // productIdParamSchema validation

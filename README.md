@@ -2,7 +2,7 @@
 
 A scalable and secure backend REST API built with Node.js and Express.js for an e-commerce platform. The API supports authentication, product management, wishlist, cart, orders, and payment workflows.
 
-## FEATURES
+## FEATURES 
 
 - User authentication (Register, Login, Logout, Refresh Token)
 - JWT-based authorization
